@@ -1,0 +1,16 @@
+{
+  "name": "mushi",
+  "version": "1.0.0",
+  "description": "(Japanese for bug)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jscad/cli": "^1.10.0",
+    "ergogen": "^4.0.4"
+  }
+}
