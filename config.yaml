@@ -11,11 +11,11 @@ units:
   # M2 Screw Inserts
   screwRadius: 1.50
   standoffThickness: 2
-  standoffDepth: 3
+  standoffDepth: 2
   # Case
   pcbThickness: 1.6
-  baseThickness: 3
-  wallThickness: 3
+  baseThickness: 2
+  wallThickness: 2
   # Footprints
   rp2040zero_x: 18
   rp2040zero_y: 23.5
