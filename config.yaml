@@ -203,31 +203,52 @@ outlines:
     - what: rectangle
       where: /trrs/
       size: [trrs_x, trrs_y] 
-  xlBoard:
+  xlBoardLeft:
     - what: outline
-      name: board
+      name: boardLeft
       expand: wallThickness
-  _mounting:
-    - what: circle
-      where: /hole/
-      radius: screwRadius
-  _support:
-    - what: rectangle
-      where: /support/
-      size: [5, 5]
-  _standoff:
+  xlBoardRight:
     - what: outline
-      name: _mounting
+      name: boardRight
+      expand: wallThickness
+  _mountingLeft:
+    - what: circle
+      where: /^hole/
+      radius: screwRadius
+  _mountingRight:
+    - what: circle
+      where: /^mirror_hole/
+      radius: screwRadius
+  _supportLeft:
+    - what: rectangle
+      where: /^support/
+      size: [5, 5]
+  _supportRight:
+    - what: rectangle
+      where: /^mirror_support/
+      size: [5, 5]
+  _standoffLeft:
+    - what: outline
+      name: _mountingLeft
+      expand: standoffThickness
+  _standoffRight:
+    - what: outline
+      name: _mountingRight
       expand: standoffThickness
   combo:
-    - xlBoard
-    - ^board
+    - xlBoardLeft
+    - xlBoardRight
+    - ^boardLeft
+    - ^boardRight
     - ^keys
     - ^_mcu
     - ^_trrs
-    - ^_standoff
-    - ^_mounting
-    - ^_support
+    - ^_standoffLeft
+    - ^_standoffRight
+    - ^_mountingLeft
+    - ^_mountingRight
+    - ^_supportLeft
+    - ^_supportRight
 pcbs:
   mushi:
     outlines:
@@ -354,44 +375,85 @@ pcbs:
         what: mountinghole
         where: /hole/
 cases:
-  bottom:
-    - name: xlBoard
+  _bottomLeft:
+    - name: xlBoardLeft
       extrude: baseThickness
-  _outerWall:
-    - name: xlBoard
+  _outerWallLeft:
+    - name: xlBoardLeft
       extrude: baseThickness + standoffDepth + pcbThickness
-  _innerWall:
-    - name: board
+  _innerWallLeft:
+    - name: boardLeft
       extrude: baseThickness + standoffDepth + pcbThickness
-  wall:
+  _wallLeft:
     - what: case
-      name: _outerWall
+      name: _outerWallLeft
       operation: add
     - what: case
-      name: _innerWall
+      name: _innerWallLeft
       operation: subtract
-  _holes:
-    - name: _mounting
+  _holesLeft:
+    - name: _mountingLeft
       extrude: baseThickness + standoffDepth
-  _standoffs:
-    - name: _standoff
+  _standoffsLeft:
+    - name: _standoffLeft
       extrude: baseThickness + standoffDepth
-  _supports:
-    - name: _support
+  _supportsLeft:
+    - name: _supportLeft
       extrude: baseThickness + standoffDepth
-  case:
+  caseLeft:
     - what: case
-      name: _standoffs
+      name: _standoffsLeft
       operation: add
     - what: case
-      name: _holes
+      name: _holesLeft
       operation: subtract
     - what: case
-      name: _supports
+      name: _supportsLeft
       operation: add
     - what: case
-      name: bottom
+      name: _bottomLeft
       operation: add
     - what: case
-      name: wall
+      name: _wallLeft
       operation: add 
+  _bottomRight:
+    - name: xlBoardRight
+      extrude: baseThickness
+  _outerWallRight:
+    - name: xlBoardRight
+      extrude: baseThickness + standoffDepth + pcbThickness
+  _innerWallRight:
+    - name: boardRight
+      extrude: baseThickness + standoffDepth + pcbThickness
+  _wallRight:
+    - what: case
+      name: _outerWallRight
+      operation: add
+    - what: case
+      name: _innerWallRight
+      operation: subtract
+  _holesRight:
+    - name: _mountingRight
+      extrude: baseThickness + standoffDepth
+  _standoffsRight:
+    - name: _standoffRight
+      extrude: baseThickness + standoffDepth
+  _supportsRight:
+    - name: _supportRight
+      extrude: baseThickness + standoffDepth
+  caseRight:
+    - what: case
+      name: _standoffsRight
+      operation: add
+    - what: case
+      name: _holesRight
+      operation: subtract
+    - what: case
+      name: _supportsRight
+      operation: add
+    - what: case
+      name: _bottomRight
+      operation: add
+    - what: case
+      name: _wallRight
+      operation: add
