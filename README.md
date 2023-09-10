@@ -76,5 +76,5 @@ The screws/nuts are optional, its a pretty tight fit so you might not need them.
 
 ### Credits
 
-- @alinelena for checking my work and helping me make such beautiful tracks
+- alinelena for checking my work and helping me make such beautiful tracks
 - logturnal for the cool [bug logo](https://www.freepik.com/free-vector/ladybug-simple-mascot-logo-design-illustration_57161077.htm)
