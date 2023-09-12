@@ -27,15 +27,11 @@ Mushi (Japanese for bug) is a simple 36 key split ergonomic Keyboard.
 - (optional) 36 x kailh hotswap sockets
 - (optional) RP2040-Zero headers
 
-
-#### Firmware
-
-- [QMK](https://github.com/dlip/qmk_firmware/tree/dlip/keyboards/mushi)
-
 #### Instructions
 
 - Solder the RP2040-Zeros to the board either directly or using the headers you purchased
 - Build and flash the firmware
+- [QMK](https://github.com/dlip/qmk_firmware/tree/dlip/keyboards/mushi)
 
 Left side
 
