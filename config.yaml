@@ -11,7 +11,7 @@ units:
   # M2 Screw Inserts
   screwRadius: 1.50
   standoffThickness: 2
-  standoffDepth: 2
+  standoffDepth: 3
   # Case
   pcbThickness: 1.6
   baseThickness: 2
