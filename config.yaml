@@ -11,7 +11,7 @@ units:
   # M2 Screw Inserts
   screwRadius: 1.50
   standoffThickness: 2
-  standoffDepth: 3
+  standoffDepth: 2
   # Case
   pcbThickness: 1.6
   baseThickness: 2
@@ -405,9 +405,6 @@ cases:
       name: _standoffsLeft
       operation: add
     - what: case
-      name: _holesLeft
-      operation: subtract
-    - what: case
       name: _supportsLeft
       operation: add
     - what: case
@@ -416,6 +413,9 @@ cases:
     - what: case
       name: _wallLeft
       operation: add 
+    - what: case
+      name: _holesLeft
+      operation: subtract
   _bottomRight:
     - name: xlBoardRight
       extrude: baseThickness
@@ -446,9 +446,6 @@ cases:
       name: _standoffsRight
       operation: add
     - what: case
-      name: _holesRight
-      operation: subtract
-    - what: case
       name: _supportsRight
       operation: add
     - what: case
@@ -457,3 +454,7 @@ cases:
     - what: case
       name: _wallRight
       operation: add
+    - what: case
+      name: _holesRight
+      operation: subtract
+      
