@@ -61,9 +61,9 @@ qmk flash -kb mushi -km default -bl uf2-split-right
 #### Parts
 
 - 3D print the left and right cases in the [case](case/) folder
-- (optional) 8 x Knurled Insert Nuts (M2 x 3mm Length x 3.2mm OD) [example](https://www.amazon.com/dp/B07LBQFNQD)
-- (optional) 8 x M2 3mm flat screws [example](https://www.amazon.com/gp/product/B01FTI8TM8/)
-- (optional) 16 x Rubber feet
+- 8 x Knurled Insert Nuts (M2 x 3mm Length x 3.2mm OD) [example](https://www.amazon.com/dp/B07LBQFNQD)
+- 8 x M2 3mm flat screws [example](https://www.amazon.com/gp/product/B01FTI8TM8/)
+- 10-16 x Rubber feet
 
 #### Instructions
 
