@@ -2,7 +2,7 @@
 
 ![Mushi Keyboard](images/mushi.jpg)
 
-Mushi (Japanese for bug) is a simple 36 key split ergonomic Keyboard.
+Mushi (Japanese for bug) is a simple 36 key split ergonomic keyboard.
 
 ## Features
 
