@@ -7,9 +7,10 @@ Mushi (Japanese for bug) is a simple 36 key split ergonomic keyboard.
 ## Features
 
 - Uses 2 cheap RP2040-Zero MCU
+- Low profile Choc switches
 - Hot swappable (optional)
 - Requires no diodes
-- Unique inner thumb splay to make it easier to reach
+- Inner thumb splay to make it easier to reach
 - Created with [Ergogen](https://github.com/ergogen/ergogen) and [KiCad](https://www.kicad.org)
 
 ## Build Your Own
