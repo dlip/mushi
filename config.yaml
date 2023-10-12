@@ -457,4 +457,3 @@ cases:
     - what: case
       name: _holesRight
       operation: subtract
-      
