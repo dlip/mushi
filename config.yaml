@@ -17,10 +17,10 @@ units:
   baseThickness: 2
   wallThickness: 2
   # Footprints
-  rp2040zero_x: 18
-  rp2040zero_y: 23.5
-  trrs_x: 12
-  trrs_y: 6
+  rp2040zero_x: 23.5
+  rp2040zero_y: 18
+  trrs_x: 8.94
+  trrs_y: 7.35
 points:
   zones:
     matrix:
@@ -63,7 +63,7 @@ points:
         middle:
           key:
             width: 1.5kx
-            splay: -20
+            splay: -15
             stagger: -0.2ky
         outer:
           key:
@@ -74,15 +74,15 @@ points:
         top:
     mcu:
       anchor:
-        ref: matrix_middle_top
-        shift: [3.2kx, -1.3ky]
+        ref: matrix_middle_bottom
+        shift: [0.5kx, -1.6ky]
       key:
         width: rp2040zero_x
         height: rp2040zero_y
     trrs:
       anchor:
-        ref: mcu
-        shift: [7, -rp2040zero_x]
+        ref: matrix_middle_top
+        shift: [kx+trrs_x + 7, -0.2ky]
       key:
         width: trrs_x
         height: trrs_y
@@ -102,10 +102,10 @@ points:
       anchor:
         ref: [thumbs_outer_cluster]
         shift: [-0.2kx, 0.7kx]
-    support:
+    cirque:
       anchor:
-        ref: [mcu]
-        shift: [0, 0.3kx]
+        ref: [matrix_index_middle]
+        shift: [1.6px, -0.3py]
   mirror: &mirror
     ref: matrix_index_top
     distance: 120
@@ -129,12 +129,10 @@ outlines:
           shift: [0.5px, 0.5py]
         - ref: matrix_index_top
           shift: [0.5px, 0.5py]
-        - ref: mcu
-          shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
-        - ref: mcu
-          shift: [rp2040zero_x/2+4, rp2040zero_y/2+2]
         - ref: trrs
-          shift: [trrs_x/2, -trrs_y/2]
+          shift: [6, trrs_y/2+1]
+        - ref: thumbs_middle_top
+          shift: [-0.5px+8, 0.5py]
         - ref: thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: thumbs_outer_cluster
@@ -146,9 +144,13 @@ outlines:
         - ref: thumbs_middle_cluster
           shift: [0.45px, -0.5py]
         - ref: thumbs_middle_cluster
-          shift: [-0.5px, -0.5py]
-        - ref: thumbs_middle_cluster
-          shift: [-0.5px, 0.5py]
+          shift: [-0.3px, -0.5py]
+        - ref: mcu
+          shift: [rp2040zero_x/2, -rp2040zero_y/2-3]
+        - ref: mcu
+          shift: [-rp2040zero_x/2-3, -rp2040zero_y/2-3]
+        - ref: mcu
+          shift: [-rp2040zero_x/2-3, rp2040zero_y/2-2]
         - ref: matrix_pinky_bottom
           shift: [-0.5px, -0.5py]
   boardRight:
@@ -164,14 +166,10 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_middle_top
           shift: [0.5px, 0.5py]
-        - ref: mirror_matrix_index_top
-          shift: [0.5px, 0.5py]
-        - ref: mirror_mcu
-          shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
-        - ref: mirror_mcu
-          shift: [rp2040zero_x/2+4, rp2040zero_y/2+2]
         - ref: mirror_trrs
-          shift: [trrs_x/2, -trrs_y/2]
+          shift: [6, trrs_y/2+1]
+        - ref: mirror_thumbs_middle_top
+          shift: [-0.5px+8, 0.5py]
         - ref: mirror_thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: mirror_thumbs_outer_cluster
@@ -183,9 +181,13 @@ outlines:
         - ref: mirror_thumbs_middle_cluster
           shift: [0.45px, -0.5py]
         - ref: mirror_thumbs_middle_cluster
-          shift: [-0.5px, -0.5py]
-        - ref: mirror_thumbs_middle_cluster
-          shift: [-0.5px, 0.5py]
+          shift: [-0.3px, -0.5py]
+        - ref: mirror_mcu
+          shift: [rp2040zero_x/2, -rp2040zero_y/2-3]
+        - ref: mirror_mcu
+          shift: [-rp2040zero_x/2-3, -rp2040zero_y/2-3]
+        - ref: mirror_mcu
+          shift: [-rp2040zero_x/2-3, rp2040zero_y/2-2]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px, -0.5py]
   board:
@@ -207,6 +209,10 @@ outlines:
     - what: outline
       name: boardRight
       expand: wallThickness
+  _cirqueRight:
+    - what: circle
+      where: /^mirror_cirque/
+      radius: 20
   _mountingLeft:
     - what: circle
       where: /^hole/
@@ -215,14 +221,6 @@ outlines:
     - what: circle
       where: /^mirror_hole/
       radius: screwRadius
-  _supportLeft:
-    - what: rectangle
-      where: /^support/
-      size: [5, 5]
-  _supportRight:
-    - what: rectangle
-      where: /^mirror_support/
-      size: [5, 5]
   _standoffLeft:
     - what: outline
       name: _mountingLeft
@@ -232,19 +230,18 @@ outlines:
       name: _mountingRight
       expand: standoffThickness
   combo:
-    - xlBoardLeft
-    - xlBoardRight
+    #- xlBoardLeft
+    #- xlBoardRight
     - ^boardLeft
     - ^boardRight
     - ^keys
     - ^_mcu
     - ^_trrs
-    - ^_standoffLeft
-    - ^_standoffRight
-    - ^_mountingLeft
-    - ^_mountingRight
-    - ^_supportLeft
-    - ^_supportRight
+    #- ^_standoffLeft
+    #- ^_standoffRight
+    #- ^_mountingLeft
+    #- ^_mountingRight
+    - ^_cirqueRight
 pcbs:
   mushi:
     outlines:
@@ -392,15 +389,9 @@ cases:
   _standoffsLeft:
     - name: _standoffLeft
       extrude: baseThickness + standoffDepth
-  _supportsLeft:
-    - name: _supportLeft
-      extrude: baseThickness + standoffDepth
   caseLeft:
     - what: case
       name: _standoffsLeft
-      operation: add
-    - what: case
-      name: _supportsLeft
       operation: add
     - what: case
       name: _bottomLeft
@@ -433,15 +424,9 @@ cases:
   _standoffsRight:
     - name: _standoffRight
       extrude: baseThickness + standoffDepth
-  _supportsRight:
-    - name: _supportRight
-      extrude: baseThickness + standoffDepth
   caseRight:
     - what: case
       name: _standoffsRight
-      operation: add
-    - what: case
-      name: _supportsRight
       operation: add
     - what: case
       name: _bottomRight
