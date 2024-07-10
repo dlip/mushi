@@ -3,8 +3,8 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
-  px: kx + 2
-  py: ky + 2
+  px: kx + 1
+  py: ky + 1
   # Double Padding Variables
   dpx: kx + 8
   dpy: ky + 8
@@ -15,8 +15,10 @@ units:
   # Footprints
   rp2040zero_x: 18
   rp2040zero_y: 23.5
-  trrs_x: 8.94
-  trrs_y: 7.35
+  usb_x: 8.94
+  usb_y: 7.35
+  fpc_x: 5
+  fpc_y: 11
 points:
   zones:
     matrix:
@@ -50,8 +52,8 @@ points:
         top:
     thumbs:
       key:
-        padding: 1kx
-        spread: 1ky
+        padding: 1ky
+        spread: 1kx
       anchor:
         ref: matrix_index_bottom
         shift: [.9kx, -1.2ky]
@@ -82,29 +84,32 @@ points:
       key:
         width: rp2040zero_x
         height: rp2040zero_y
-    trrs:
+    fpc:
+      anchor:
+        ref: mcu
+        shift: [0.5kx, -1.5ky]
+      key:
+        width: fpc_x
+        height: fpc_y
+    usb:
       anchor:
         ref: matrix_middle_top
-        shift: [1.1kx, .35ky]
+        shift: [1.1kx, .32ky]
       key:
-        width: trrs_x
-        height: trrs_y
+        width: usb_x
+        height: usb_y
     holePinkyTop:
       anchor:
         ref: [matrix_pinky_top]
-        shift: [0.4px, 0.6py]
-    holeIndexTop:
+        shift: [0.5px, 0.55py]
+    holeMiddleBottom:
       anchor:
-        ref: [matrix_index_top]
-        shift: [-0.3px, 12]
-    # holeInnerThumbs:
-    #  anchor:
-    #    ref: [thumbs_inner_cluster]
-    #    shift: [0.2kx, 0.7kx]
+        ref: [matrix_middle_bottom]
+        shift: [0kx, -0.8ky]
     holeOuterThumbs:
       anchor:
-        ref: [thumbs_outer_cluster]
-        shift: [-0.2kx, 0.7kx]
+        ref: [matrix_index_middle]
+        shift: [0.7kx, -0.5kx]
   mirror: &mirror
     ref: matrix_index_top
     distance: 120
@@ -126,8 +131,8 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: matrix_middle_top
           shift: [0.5px, 0.5py]
-        - ref: trrs
-          shift: [trrs_x/2, trrs_y/2]
+        - ref: usb
+          shift: [usb_x/2, usb_y/2]
         - ref: mcu
           shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
         - ref: mcu
@@ -135,7 +140,7 @@ outlines:
         - ref: mcu
           shift: [rp2040zero_x/2+4, -rp2040zero_y/2]
         - ref: thumbs_outer_top
-          shift: [-0.4px, 0.5py]
+          shift: [-0.3px, 0.5py]
         - ref: thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: thumbs_outer_cluster
@@ -163,8 +168,8 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_middle_top
           shift: [-0.5px, 0.5py]
-        - ref: mirror_trrs
-          shift: [trrs_x/2, trrs_y/2]
+        - ref: mirror_usb
+          shift: [usb_x/2, usb_y/2]
         - ref: mirror_mcu
           shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
         - ref: mirror_mcu
@@ -172,7 +177,7 @@ outlines:
         - ref: mirror_mcu
           shift: [rp2040zero_x/2+4, -rp2040zero_y/2]
         - ref: mirror_thumbs_outer_top
-          shift: [-0.4px, 0.5py]
+          shift: [-0.3px, 0.5py]
         - ref: mirror_thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: mirror_thumbs_outer_cluster
@@ -196,14 +201,18 @@ outlines:
     - what: rectangle
       where: /mcu/
       size: [rp2040zero_x, rp2040zero_y]
+  _fpc:
+    - what: rectangle
+      where: /fpc/
+      size: [fpc_x, fpc_y]
   _cirque:
     - what: circle
       where: /cirque/
       radius: 20
-  _trrs:
+  _usb:
     - what: rectangle
-      where: /trrs/
-      size: [trrs_x, trrs_y]
+      where: /usb/
+      size: [usb_x, usb_y]
   _mountingLeft:
     - what: circle
       where: /^hole/
@@ -225,8 +234,9 @@ outlines:
     - ^boardRight
     - ^keys
     - ^_mcu
+    - ^_fpc
     - ^_cirque
-    - ^_trrs
+    - ^_usb
     - ^_standoffLeft
     - ^_standoffRight
     - ^_mountingLeft
@@ -330,28 +340,6 @@ pcbs:
           # GP2:  mirror_matrix_outer_top
           GP1: rRX
           GP0: rTX
-      trrsLeft:
-        what: trrs
-        where: trrs
-        adjust:
-          rotate: -90
-          shift: [trrs_x / 2, -trrs_y / 2 + 2]
-        params:
-          A: GND
-          B: P3V3
-          C: RX
-          D: TX
-      trrsRight:
-        what: trrs
-        where: mirror_trrs
-        adjust:
-          rotate: -90
-          shift: [trrs_x / 2, 3.5]
-        params:
-          A: rGND
-          B: rP3V3
-          C: rTX
-          D: rRX
       holes:
         what: mountinghole
         where: /hole/
