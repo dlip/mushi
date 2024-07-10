@@ -31,25 +31,39 @@ points:
         pinky:
           key:
             splay: 5
+            column_net: lGP9
+            mirror.column_net: rGP9
         ring:
           key:
             stagger: 0.33ky
             splay: -3
             spread: 1kx + 2
+            column_net: lGP10
+            mirror.column_net: rGP10
         middle:
           key:
             stagger: 0.33ky
             splay: -2
             spread: 1kx + 1
+            column_net: lGP11
+            mirror.column_net: rGP11
         index:
           key:
             stagger: -0.45ky
             splay: -2
             spread: 1kx + 0.2
+            column_net: lGP12
+            mirror.column_net: rGP12
       rows:
         bottom:
+          row_net: lGP27
+          mirror.row_net: rGP27
         middle:
+          row_net: lGP26
+          mirror.row_net: rGP26
         top:
+          row_net: lGP15
+          mirror.row_net: rGP15
     thumbs:
       key:
         padding: 1ky
@@ -63,13 +77,21 @@ points:
             width: 1.5kx
             splay: -20
             stagger: -0.2ky
+            column_net: lGP11
+            mirror.column_net: rGP11
         outer:
           key:
             width: 1.5kx
             spread: 1ky+1
+            column_net: lGP12
+            mirror.column_net: rGP12
       rows:
         cluster:
+          row_net: lGP28
+          mirror.column_net: rGP28
         top:
+          row_net: lGP29
+          mirror.column_net: rGP29
     mcu:
       anchor:
         ref: matrix_middle_top
@@ -247,34 +269,32 @@ pcbs:
         params:
           keycaps: true
           hotswap: true
-          from: "{{name}}"
-          to: GND
-      chocLeft:
-        what: choc
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diodeLeft:
+        what: diode
         where: /^(thumb|matrix)/
-        adjust:
-          rotate: 180
         params:
-          keycaps: true
-          from: "{{name}}"
-          to: GND
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
       chocHotswapRight:
         what: choc
         where: /^mirror_(thumb|matrix)/
         params:
           keycaps: true
           hotswap: true
-          from: "{{name}}"
-          to: rGND
-      chocRight:
-        what: choc
+          from: "{{mirror.column_net}}"
+          to: "{{mirror.colrow}}"
+      diodeRight:
+        what: diode
         where: /^mirror_(thumb|matrix)/
-        adjust:
-          rotate: 180
         params:
-          keycaps: true
-          from: "{{name}}"
-          to: rGND
+          from: "{{mirror.colrow}}"
+          to: "{{mirror.row_net}}"
+        adjust:
+          shift: [0, -5]
       mcuLeft:
         what: rp2040zero
         where: mcu
@@ -282,29 +302,29 @@ pcbs:
           shift: [-rp2040zero_x / 2, -rp2040zero_y / 2]
         params:
           reverse: true
-          P5V: P5V
-          GND: GND
-          P3V3: P3V3
-          # GP29: matrix_outer_top
-          GP28: matrix_index_top
-          GP27: matrix_middle_top
-          GP26: matrix_ring_top
-          GP15: matrix_pinky_top
-          # GP14: matrix_outer_middle
-          GP13: matrix_index_middle
-          GP12: matrix_middle_middle
-          GP11: matrix_ring_middle
-          GP10: matrix_pinky_middle
-          # GP9:  matrix_outer_bottom
-          GP8: matrix_index_bottom
-          GP7: matrix_middle_bottom
-          GP6: matrix_ring_bottom
-          GP5: matrix_pinky_bottom
-          GP4: thumbs_inner_cluster
-          GP3: thumbs_middle_cluster
-          GP2: thumbs_outer_cluster
-          GP1: RX
-          GP0: TX
+          P5V: lP5V
+          GND: lGND
+          P3V3: lP3V3
+          GP29: lGP29
+          GP28: lGP28
+          GP27: lGP27
+          GP26: lGP26
+          GP15: lGP15
+          GP14: lGP14
+          GP13: lGP13
+          GP12: lGP12
+          GP11: lGP11
+          GP10: lGP10
+          GP9: lGP9
+          GP8: lGP8
+          GP7: lGP7
+          GP6: lGP6
+          GP5: lGP5
+          GP4: lGP4
+          GP3: lGP3
+          GP2: lGP2
+          GP1: lGP1
+          GP0: lGP0
       mcuRight:
         what: rp2040zero
         where: mirror_mcu
@@ -314,26 +334,26 @@ pcbs:
           P5V: rP5V
           GND: rGND
           P3V3: rP3V3
-          GP29: mirror_thumbs_outer_cluster
-          GP28: mirror_thumbs_middle_cluster
-          GP27: mirror_thumbs_inner_cluster
-          GP26: mirror_matrix_pinky_bottom
-          GP15: mirror_matrix_ring_bottom
-          GP14: mirror_matrix_middle_bottom
-          GP13: mirror_matrix_index_bottom
-          # GP12: mirror_matrix_outer_bottom
-          GP11: mirror_matrix_pinky_middle
-          GP10: mirror_matrix_ring_middle
-          GP9: mirror_matrix_middle_middle
-          GP8: mirror_matrix_index_middle
-          # GP7:  mirror_matrix_outer_middle
-          GP6: mirror_matrix_pinky_top
-          GP5: mirror_matrix_ring_top
-          GP4: mirror_matrix_middle_top
-          GP3: mirror_matrix_index_top
-          # GP2:  mirror_matrix_outer_top
-          GP1: rRX
-          GP0: rTX
+          GP29: rGP29
+          GP28: rGP28
+          GP27: rGP27
+          GP26: rGP26
+          GP15: rGP15
+          GP14: rGP14
+          GP13: rGP13
+          GP12: rGP12
+          GP11: rGP11
+          GP10: rGP10
+          GP9: rGP9
+          GP8: rGP8
+          GP7: rGP7
+          GP6: rGP6
+          GP5: rGP5
+          GP4: rGP4
+          GP3: rGP3
+          GP2: rGP2
+          GP1: rGP1
+          GP0: rGP0
       holes:
         what: mountinghole
         where: /hole/
