@@ -12,13 +12,9 @@ units:
   screwRadius: 1.50
   standoffThickness: 2
   standoffDepth: 2
-  # Case
-  pcbThickness: 1.6
-  baseThickness: 2
-  wallThickness: 2
   # Footprints
-  rp2040zero_x: 23.5
-  rp2040zero_y: 18
+  rp2040zero_x: 18
+  rp2040zero_y: 23.5
   trrs_x: 8.94
   trrs_y: 7.35
 points:
@@ -63,7 +59,7 @@ points:
         middle:
           key:
             width: 1.5kx
-            splay: -15
+            splay: -20
             stagger: -0.2ky
         outer:
           key:
@@ -74,15 +70,22 @@ points:
         top:
     mcu:
       anchor:
-        ref: matrix_middle_bottom
-        shift: [0.5kx, -1.6ky]
+        ref: matrix_middle_top
+        shift: [2.3kx, -.5ky]
+      key:
+        width: rp2040zero_x
+        height: rp2040zero_y
+    cirque:
+      anchor:
+        ref: mcu
+        shift: [.5kx, -1.5ky]
       key:
         width: rp2040zero_x
         height: rp2040zero_y
     trrs:
       anchor:
         ref: matrix_middle_top
-        shift: [kx+trrs_x + 7, -0.2ky]
+        shift: [1.1kx, .35ky]
       key:
         width: trrs_x
         height: trrs_y
@@ -102,10 +105,6 @@ points:
       anchor:
         ref: [thumbs_outer_cluster]
         shift: [-0.2kx, 0.7kx]
-    cirque:
-      anchor:
-        ref: [matrix_index_middle]
-        shift: [1.6px, -0.3py]
   mirror: &mirror
     ref: matrix_index_top
     distance: 120
@@ -127,12 +126,16 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: matrix_middle_top
           shift: [0.5px, 0.5py]
-        - ref: matrix_index_top
-          shift: [0.5px, 0.5py]
         - ref: trrs
-          shift: [6, trrs_y/2+1]
-        - ref: thumbs_middle_top
-          shift: [-0.5px+8, 0.5py]
+          shift: [trrs_x/2, trrs_y/2]
+        - ref: mcu
+          shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
+        - ref: mcu
+          shift: [rp2040zero_x/2+4, rp2040zero_y/2+2]
+        - ref: mcu
+          shift: [rp2040zero_x/2+4, -rp2040zero_y/2]
+        - ref: thumbs_outer_top
+          shift: [-0.4px, 0.5py]
         - ref: thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: thumbs_outer_cluster
@@ -144,13 +147,9 @@ outlines:
         - ref: thumbs_middle_cluster
           shift: [0.45px, -0.5py]
         - ref: thumbs_middle_cluster
-          shift: [-0.3px, -0.5py]
-        - ref: mcu
-          shift: [rp2040zero_x/2, -rp2040zero_y/2-3]
-        - ref: mcu
-          shift: [-rp2040zero_x/2-3, -rp2040zero_y/2-3]
-        - ref: mcu
-          shift: [-rp2040zero_x/2-3, rp2040zero_y/2-2]
+          shift: [-0.5px, -0.5py]
+        - ref: thumbs_middle_cluster
+          shift: [-0.5px, 0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px, -0.5py]
   boardRight:
@@ -164,14 +163,16 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_middle_top
           shift: [-0.5px, 0.5py]
-        - ref: mirror_matrix_middle_top
-          shift: [0.5px, 0.5py]
-        - ref: mirror_matrix_index_top
-          shift: [0.5px, 0.5py]
         - ref: mirror_trrs
-          shift: [6, trrs_y/2+1]
-        - ref: mirror_thumbs_middle_top
-          shift: [-0.5px+8, 0.5py]
+          shift: [trrs_x/2, trrs_y/2]
+        - ref: mirror_mcu
+          shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
+        - ref: mirror_mcu
+          shift: [rp2040zero_x/2+4, rp2040zero_y/2+2]
+        - ref: mirror_mcu
+          shift: [rp2040zero_x/2+4, -rp2040zero_y/2]
+        - ref: mirror_thumbs_outer_top
+          shift: [-0.4px, 0.5py]
         - ref: mirror_thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: mirror_thumbs_outer_cluster
@@ -183,13 +184,9 @@ outlines:
         - ref: mirror_thumbs_middle_cluster
           shift: [0.45px, -0.5py]
         - ref: mirror_thumbs_middle_cluster
-          shift: [-0.3px, -0.5py]
-        - ref: mirror_mcu
-          shift: [rp2040zero_x/2, -rp2040zero_y/2-3]
-        - ref: mirror_mcu
-          shift: [-rp2040zero_x/2-3, -rp2040zero_y/2-3]
-        - ref: mirror_mcu
-          shift: [-rp2040zero_x/2-3, rp2040zero_y/2-2]
+          shift: [-0.5px, -0.5py]
+        - ref: mirror_thumbs_middle_cluster
+          shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px, -0.5py]
   board:
@@ -199,22 +196,14 @@ outlines:
     - what: rectangle
       where: /mcu/
       size: [rp2040zero_x, rp2040zero_y]
+  _cirque:
+    - what: circle
+      where: /cirque/
+      radius: 20
   _trrs:
     - what: rectangle
       where: /trrs/
       size: [trrs_x, trrs_y]
-  xlBoardLeft:
-    - what: outline
-      name: boardLeft
-      expand: wallThickness
-  xlBoardRight:
-    - what: outline
-      name: boardRight
-      expand: wallThickness
-  _cirqueRight:
-    - what: circle
-      where: /^mirror_cirque/
-      radius: 20
   _mountingLeft:
     - what: circle
       where: /^hole/
@@ -232,18 +221,16 @@ outlines:
       name: _mountingRight
       expand: standoffThickness
   combo:
-    #- xlBoardLeft
-    #- xlBoardRight
     - ^boardLeft
     - ^boardRight
     - ^keys
     - ^_mcu
+    - ^_cirque
     - ^_trrs
-    #- ^_standoffLeft
-    #- ^_standoffRight
-    #- ^_mountingLeft
-    #- ^_mountingRight
-    - ^_cirqueRight
+    - ^_standoffLeft
+    - ^_standoffRight
+    - ^_mountingLeft
+    - ^_mountingRight
 pcbs:
   mushi:
     outlines:
@@ -368,74 +355,3 @@ pcbs:
       holes:
         what: mountinghole
         where: /hole/
-cases:
-  _bottomLeft:
-    - name: xlBoardLeft
-      extrude: baseThickness
-  _outerWallLeft:
-    - name: xlBoardLeft
-      extrude: baseThickness + standoffDepth + pcbThickness
-  _innerWallLeft:
-    - name: boardLeft
-      extrude: baseThickness + standoffDepth + pcbThickness
-  _wallLeft:
-    - what: case
-      name: _outerWallLeft
-      operation: add
-    - what: case
-      name: _innerWallLeft
-      operation: subtract
-  _holesLeft:
-    - name: _mountingLeft
-      extrude: baseThickness + standoffDepth
-  _standoffsLeft:
-    - name: _standoffLeft
-      extrude: baseThickness + standoffDepth
-  caseLeft:
-    - what: case
-      name: _standoffsLeft
-      operation: add
-    - what: case
-      name: _bottomLeft
-      operation: add
-    - what: case
-      name: _wallLeft
-      operation: add
-    - what: case
-      name: _holesLeft
-      operation: subtract
-  _bottomRight:
-    - name: xlBoardRight
-      extrude: baseThickness
-  _outerWallRight:
-    - name: xlBoardRight
-      extrude: baseThickness + standoffDepth + pcbThickness
-  _innerWallRight:
-    - name: boardRight
-      extrude: baseThickness + standoffDepth + pcbThickness
-  _wallRight:
-    - what: case
-      name: _outerWallRight
-      operation: add
-    - what: case
-      name: _innerWallRight
-      operation: subtract
-  _holesRight:
-    - name: _mountingRight
-      extrude: baseThickness + standoffDepth
-  _standoffsRight:
-    - name: _standoffRight
-      extrude: baseThickness + standoffDepth
-  caseRight:
-    - what: case
-      name: _standoffsRight
-      operation: add
-    - what: case
-      name: _bottomRight
-      operation: add
-    - what: case
-      name: _wallRight
-      operation: add
-    - what: case
-      name: _holesRight
-      operation: subtract
