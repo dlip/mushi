@@ -3,8 +3,8 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
-  px: kx + 1
-  py: ky + 1
+  px: kx + 2
+  py: ky + 2
   # Double Padding Variables
   dpx: kx + 8
   dpy: ky + 8
@@ -66,7 +66,7 @@ points:
         outer:
           key:
             width: 1.5kx
-            spread: 1py
+            spread: 1ky+1
       rows:
         cluster:
         top:
@@ -129,18 +129,14 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: matrix_middle_top
           shift: [-0.5px, 0.5py]
-        - ref: matrix_middle_top
-          shift: [0.5px, 0.5py]
         - ref: usb
           shift: [usb_x/2, usb_y/2]
         - ref: mcu
           shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
         - ref: mcu
           shift: [rp2040zero_x/2+4, rp2040zero_y/2+2]
-        - ref: mcu
-          shift: [rp2040zero_x/2+4, -rp2040zero_y/2]
         - ref: thumbs_outer_top
-          shift: [-0.3px, 0.5py]
+          shift: [-0.32px, 0.5py]
         - ref: thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: thumbs_outer_cluster
@@ -174,10 +170,8 @@ outlines:
           shift: [-rp2040zero_x/2, rp2040zero_y/2+2]
         - ref: mirror_mcu
           shift: [rp2040zero_x/2+4, rp2040zero_y/2+2]
-        - ref: mirror_mcu
-          shift: [rp2040zero_x/2+4, -rp2040zero_y/2]
         - ref: mirror_thumbs_outer_top
-          shift: [-0.3px, 0.5py]
+          shift: [-0.32px, 0.5py]
         - ref: mirror_thumbs_outer_top
           shift: [0.5px, 0.5py]
         - ref: mirror_thumbs_outer_cluster
