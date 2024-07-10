@@ -166,6 +166,8 @@ outlines:
           shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_middle_top
           shift: [0.5px, 0.5py]
+        - ref: mirror_matrix_index_top
+          shift: [0.5px, 0.5py]
         - ref: mirror_trrs
           shift: [6, trrs_y/2+1]
         - ref: mirror_thumbs_middle_top
