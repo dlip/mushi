@@ -10,8 +10,7 @@ units:
   dpy: ky + 8
   # M2 Screw Inserts
   screwRadius: 1.50
-  standoffThickness: 2
-  standoffDepth: 2
+  standoffRadius: 3
   # Footprints
   rp2040zero_x: 18
   rp2040zero_y: 23.5
@@ -120,18 +119,18 @@ points:
       key:
         width: usb_x
         height: usb_y
-    holePinkyTop:
+    holeRingTop:
       anchor:
-        ref: [matrix_pinky_top]
-        shift: [0.5px, 0.55py]
-    holeMiddleBottom:
+        ref: [matrix_ring_top]
+        shift: [0.33px, 0.56py]
+    holeRingBottom:
       anchor:
-        ref: [matrix_middle_bottom]
-        shift: [0kx, -0.8ky]
+        ref: [matrix_ring_bottom]
+        shift: [-0.35kx, -0.7ky]
     holeOuterThumbs:
       anchor:
-        ref: [matrix_index_middle]
-        shift: [0.7kx, -0.5kx]
+        ref: [matrix_index_bottom]
+        shift: [0.6kx, -0.45ky]
   mirror: &mirror
     ref: matrix_index_top
     distance: 120
@@ -238,13 +237,13 @@ outlines:
       where: /^mirror_hole/
       radius: screwRadius
   _standoffLeft:
-    - what: outline
-      name: _mountingLeft
-      expand: standoffThickness
+    - what: circle
+      where: /^hole/
+      radius: standoffRadius
   _standoffRight:
-    - what: outline
-      name: _mountingRight
-      expand: standoffThickness
+    - what: circle
+      where: /^hole/
+      radius: standoffRadius
   combo:
     - ^boardLeft
     - ^boardRight
