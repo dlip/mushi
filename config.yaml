@@ -164,10 +164,6 @@ outlines:
           shift: [0.5px, 0.5py]
         - ref: thumbs_outer_cluster
           shift: [0.5px, -0.5py]
-        - ref: thumbs_outer_cluster
-          shift: [-0.45px, -0.5py]
-        - ref: thumbs_middle_cluster
-          shift: [0.45px, -0.5py]
         - ref: thumbs_middle_cluster
           shift: [-0.5px, -0.5py]
         - ref: thumbs_middle_cluster
@@ -199,10 +195,6 @@ outlines:
           shift: [0.5px, 0.5py]
         - ref: mirror_thumbs_outer_cluster
           shift: [0.5px, -0.5py]
-        - ref: mirror_thumbs_outer_cluster
-          shift: [-0.45px, -0.5py]
-        - ref: mirror_thumbs_middle_cluster
-          shift: [0.45px, -0.5py]
         - ref: mirror_thumbs_middle_cluster
           shift: [-0.5px, -0.5py]
         - ref: mirror_thumbs_middle_cluster

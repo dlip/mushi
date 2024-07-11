@@ -220,7 +220,7 @@
 		(remove_unused_layers no)
 		(uuid "8662c87e-1c30-419e-bd83-76edb0508e43")
 	)
-	(model "${KIPRJMOD}/libraries/harite/footprints/HRO  TYPE-C-31-M-12.step"
+	(model "HRO  TYPE-C-31-M-12.step"
 		(offset
 			(xyz -4.5 0 0)
 		)
