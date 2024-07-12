@@ -71,7 +71,7 @@ points:
         ref: matrix_index_bottom
         shift: [.9kx, -1.2ky]
       columns:
-        middle:
+        inner:
           key:
             width: 1.5kx
             splay: -20
@@ -85,12 +85,12 @@ points:
             column_net: lGP12
             mirror.column_net: rGP12
       rows:
-        cluster:
+        bottom:
           row_net: lGP28
-          mirror.column_net: rGP28
+          mirror.row_net: rGP28
         top:
           row_net: lGP29
-          mirror.column_net: rGP29
+          mirror.row_net: rGP29
     mcu:
       anchor:
         ref: matrix_middle_top
@@ -160,13 +160,13 @@ outlines:
           shift: [-0.32px, 0.5py]
         - ref: thumbs_outer_top
           shift: [0.5px, 0.5py]
-        - ref: thumbs_outer_cluster
+        - ref: thumbs_outer_bottom
           shift: [0.5px, 0.5py]
-        - ref: thumbs_outer_cluster
+        - ref: thumbs_outer_bottom
           shift: [0.5px, -0.5py]
-        - ref: thumbs_middle_cluster
+        - ref: thumbs_inner_bottom
           shift: [-0.5px, -0.5py]
-        - ref: thumbs_middle_cluster
+        - ref: thumbs_inner_bottom
           shift: [-0.5px, 0.5py]
         - ref: matrix_pinky_bottom
           shift: [-0.5px, -0.5py]
@@ -191,13 +191,13 @@ outlines:
           shift: [-0.32px, 0.5py]
         - ref: mirror_thumbs_outer_top
           shift: [0.5px, 0.5py]
-        - ref: mirror_thumbs_outer_cluster
+        - ref: mirror_thumbs_outer_bottom
           shift: [0.5px, 0.5py]
-        - ref: mirror_thumbs_outer_cluster
+        - ref: mirror_thumbs_outer_bottom
           shift: [0.5px, -0.5py]
-        - ref: mirror_thumbs_middle_cluster
+        - ref: mirror_thumbs_inner_bottom
           shift: [-0.5px, -0.5py]
-        - ref: mirror_thumbs_middle_cluster
+        - ref: mirror_thumbs_inner_bottom
           shift: [-0.5px, 0.5py]
         - ref: mirror_matrix_pinky_bottom
           shift: [-0.5px, -0.5py]
@@ -277,12 +277,12 @@ pcbs:
           keycaps: true
           hotswap: true
           from: "{{mirror.column_net}}"
-          to: "{{mirror.colrow}}"
+          to: "{{colrow}}"
       diodeRight:
         what: diode
         where: /^mirror_(thumb|matrix)/
         params:
-          from: "{{mirror.colrow}}"
+          from: "{{colrow}}"
           to: "{{mirror.row_net}}"
         adjust:
           shift: [0, -5]

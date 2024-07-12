@@ -530,11 +530,15 @@
       },
       {
         "netclass": "Default",
-        "pattern": "middle_cluster"
+        "pattern": "inner_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "outer_cluster"
+        "pattern": "inner_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "outer_bottom"
       },
       {
         "netclass": "Default",
@@ -566,7 +570,31 @@
       },
       {
         "netclass": "Default",
+        "pattern": "mirror_pinky_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_pinky_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_pinky_top"
+      },
+      {
+        "netclass": "Default",
         "pattern": "rGP10"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_ring_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_ring_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_ring_top"
       },
       {
         "netclass": "Default",
@@ -574,15 +602,47 @@
       },
       {
         "netclass": "Default",
+        "pattern": "mirror_middle_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_middle_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_middle_top"
+      },
+      {
+        "netclass": "Default",
         "pattern": "rGP12"
       },
       {
         "netclass": "Default",
-        "pattern": "rGP28"
+        "pattern": "mirror_index_bottom"
       },
       {
         "netclass": "Default",
-        "pattern": "rGP29"
+        "pattern": "mirror_index_middle"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_index_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_inner_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_inner_top"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_outer_bottom"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "mirror_outer_top"
       },
       {
         "netclass": "Default",
@@ -595,6 +655,14 @@
       {
         "netclass": "Default",
         "pattern": "rGP15"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rGP28"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "rGP29"
       },
       {
         "netclass": "Default",
